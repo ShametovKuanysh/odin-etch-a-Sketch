@@ -49,6 +49,14 @@ function loadDivs(){
         div.style.height = `calc(100% / ${num})`
     
         div.addEventListener("mouseover", ev => {
+            if (mode == "color"){
+                let curBr = div.dataset.brightness || 100
+                curBr = parseInt(curBr) - 10;
+                if (curBr <= 100) {
+                    div.style.filter = `brightness(${curBr}%)`;
+                    div.dataset.brightness = curBr;
+                }
+            }
             red = Math.floor(mode == "color" ? Math.random()*255 : 0)
             green = Math.floor(mode == "color" ? Math.random()*255 : 0)
             blue = Math.floor(mode == "color" ? Math.random()*255 : 0)
